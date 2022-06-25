@@ -28,4 +28,14 @@ public class CarController {
       return "parking-out";
    }
 
+   @GetMapping("/edit-car")
+   public String showEditform() {
+      return "edit-car";
+   }
+
+   @GetMapping("/out-car")
+   public String showOutform() {
+      return "out-car";
+   }
+
 }
