@@ -21,4 +21,11 @@ public class CarController {
       return "parking-in";
    }
 
+   @GetMapping("/parking-out")
+   public String showParketOutPage(Model model) {
+      List<Car> listCars = service.listCarsOut();
+      model.addAttribute("listCars", listCars);
+      return "parking-out";
+   }
+
 }
