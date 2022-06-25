@@ -30,8 +30,8 @@ public class CarRepositoryTests {
         Integer eIgual = car.getData_entrada().compareTo(dataAtual);
         System.out.println("E igual  " + eIgual);
 
-        car.setPlaca("HYV-1522");
-        car.setModelo("Chevrolet");
+        car.setPlaca("SEF-5268");
+        car.setModelo("FORD");
         Car savedCar = repo.save(car);
 
         Assertions.assertThat(eIgual).isEqualTo(0);

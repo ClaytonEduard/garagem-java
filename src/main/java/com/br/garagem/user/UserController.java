@@ -16,9 +16,9 @@ public class UserController {
     }
 
     @PostMapping("/auth")
-    public Boolean authentication() {
+    public String authentication() {
         this.service.getUserByNickName();
-        return true;
+        return "true";
     }
 
 }
