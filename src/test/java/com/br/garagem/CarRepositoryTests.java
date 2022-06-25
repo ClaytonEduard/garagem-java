@@ -1,6 +1,10 @@
 package com.br.garagem;
 
+
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
+
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -17,7 +21,7 @@ import com.br.garagem.cars.CarRepository;
 @Rollback(false)
 public class CarRepositoryTests {
     @Autowired
-    private CarRepository repo; 
+    private CarRepository repo;
 
     @Test
     public void testAddCar() {
@@ -39,6 +43,38 @@ public class CarRepositoryTests {
         Assertions.assertThat(savedCar.getId()).isGreaterThan(0);
         Assertions.assertThat(savedCar.getTempo()).isEqualTo(60);
 
+    }
+
+    @Test
+    public void calcularUmaHora(){
+        Car car = new Car();    
+        Date d2 = new Date();
+        Date d1 = new Date();
+
+        LocalDateTime localDateTime = d1.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        localDateTime = localDateTime.plusHours(1);
+        d2 = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+        car.setData_entrada(d1);
+        car.setData_saida(d2);
+
+        Double result = car.calculateTotalPay(6.0);
+        Assertions.assertThat(result).isEqualTo(6.0);
+    }
+
+    @Test
+    public void calcularDuasHoras(){
+        Car car = new Car();    
+        Date d2 = new Date();
+        Date d1 = new Date();
+
+        LocalDateTime localDateTime = d1.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        localDateTime = localDateTime.plusHours(2);
+        d2 = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+        car.setData_entrada(d1);
+        car.setData_saida(d2);
+
+        Double result = car.calculateTotalPay(6.0);
+        Assertions.assertThat(result).isEqualTo(12.0);
     }
 
 }
