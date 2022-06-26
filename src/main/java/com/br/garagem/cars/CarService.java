@@ -7,10 +7,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.br.garagem.valor.Valor;
+import com.br.garagem.valor.ValorService;
+
 @Service
 public class CarService {
     @Autowired
     private CarRepository repo;
+    @Autowired
+    private ValorService valorService;
 
     // listar carros
     public List<Car> listParkedCars() {
@@ -41,7 +46,7 @@ public class CarService {
     }
 
     public String saveNewCar(String placa, String modelo) {
-        if (placa != null) {
+        if (placa == null) {
             return "Erro: O campo placa é obrigatório!";
         }
         if ((placa.length() != 8) || (!placa.contains("-"))) {
@@ -58,27 +63,43 @@ public class CarService {
 
     public String updateCar(Integer id, String placa, String modelo) {
 
-        if (placa != null) {
+        if (placa == null) {
             return "Erro: O campo placa é obrigatório!";
         }
         if ((placa.length() != 8) || (!placa.contains("-"))) {
             return "Erro: A placa deve conter o padrão XXX-9999";
         }
 
-        Car car = new Car();
         Boolean carExist = repo.existsById(id);
 
         if (!carExist) {
             return "Erro: Carro não encontrado!";
         }
-        Optional<Car> oldCar = repo.findById(id);
-        car.setId(id);
-        car.setData_entrada(oldCar.get().getData_entrada());
-        car.setPlaca(placa);
-        car.setModelo(modelo);
-        car.setData_saida(oldCar.get().getData_saida());
-        repo.save(car);
+        Optional<Car> car = repo.findById(id);
+        car.get().setPlaca(placa);
+        car.get().setModelo(modelo);
+        repo.save(car.get());
         return "Sucesso: Alteração concluída!";
+    }
+
+    // CONFIRMAR SAIDA DO CARRO
+    public void confirmOutCar(Integer id) {
+        Optional<Car> car = getCarByID(id);
+        if (car.isPresent()) {
+            Valor valor = new Valor();
+            valor = this.valorService.getValor().get();
+            car.get().calculateTotalPay(valor.getPrimeira_hora(), valor.getDemais_horas());
+            repo.save(car.get());
+        }
+
+    }
+
+    // TOTALIZADORA CARRO
+    public Optional<Car> getCarResume(Integer id) {
+        Optional<Car> car = getCarByID(id);
+        Valor valor = new Valor();
+        car.get().calculateTotalPay(valor.getPrimeira_hora(), valor.getDemais_horas());
+        return car;
     }
 
 }
