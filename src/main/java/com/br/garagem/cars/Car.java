@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Car {
     // criacao do construtor interno
     public Car() {
-        this.tempo = (long) 60;
+        this.tempo = 60.0;
         this.data_entrada = new Date();
     }
 
@@ -33,7 +33,7 @@ public class Car {
     @Column()
     private Date data_saida;
     @Column(nullable = false)
-    private Long tempo;
+    private Double tempo;
     @Column()
     private Double valor_pago;
 
@@ -55,22 +55,20 @@ public class Car {
             setData_saida(new Date());
             return priceFirstHour;
         }
-
         long difference = endDate.getTime() - startDate.getTime();
-        long minutes = TimeUnit.MILLISECONDS.toMinutes(difference);
+        Double minutes =  (double) TimeUnit.MILLISECONDS.toMinutes(difference);
 
-        this.setTempo(minutes);
-        Long timeHours = minutes / 60;
-
-        if (timeHours <= 1) {
+        Double timeHours = (double) (minutes / 60);
+        timeHours = Math.ceil(timeHours);
+        if (timeHours <= 1.0) {
             setValor_pago(priceFirstHour);
-
+            this.setTempo(minutes);
             return priceFirstHour;
         }
-        totalToPay = priceFirstHour;
-        totalToPay += (timeHours - 1) * otherHours;
+        totalToPay = ((timeHours - 1) * otherHours);
+        totalToPay += priceFirstHour;
         setValor_pago(totalToPay);
-
+        this.setTempo(minutes);
         return totalToPay;
 
     }
@@ -115,11 +113,11 @@ public class Car {
         this.data_saida = data_saida;
     }
 
-    public Long getTempo() {
+    public Double getTempo() {
         return this.tempo;
     }
 
-    public void setTempo(Long tempo) {
+    public void setTempo(Double tempo) {
         this.tempo = tempo;
     }
 

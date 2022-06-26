@@ -1,6 +1,7 @@
 package com.br.garagem.cars;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -99,6 +100,7 @@ public class CarService {
         Optional<Car> car = getCarByID(id);
         Valor valor = new Valor();
         valor = valorService.getValor().get();
+        car.get().setData_saida(new Date());
         car.get().calculateTotalPay(valor.getPrimeira_hora(), valor.getDemais_horas());
         return car;
     }

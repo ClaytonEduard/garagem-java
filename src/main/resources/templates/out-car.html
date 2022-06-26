@@ -18,9 +18,9 @@
         <label for="placa">Placa:</label><br>
         <input type="text" id="placa" name="placa" readonly disabled th:field="${car.placa}"/><br>
         <label for="data_entrada">Entrada</label><br>
-        <input type="text" id="data_entrada" name="data_entrada" readonly disabled th:field="${car.data_entrada}"/><br>
+        <input type="text" id="data_entrada" name="data_entrada" readonly disabled th:value="${data_entrada}"/><br>
         <label for="data_saida">Saída</label><br>
-        <input type="text" id="data_saida" name="data_saida" readonly disabled th:field="${car.data_saida}"/><br>
+        <input type="text" id="data_saida" name="data_saida" readonly disabled th:value="${data_saida}"/><br>
         <label for="tempo">Tempo Estacionado</label><br>
         <input type="text" id="tempo" name="tempo" readonly disabled th:field="${car.tempo}"/><br>
         <label for="valor_pago">Valor total</label><br>

@@ -53,6 +53,7 @@ public class CarController {
    public String showEditForm(Model model, @PathVariable("id") Integer id) {
       Optional<Car> car = this.service.getCarByID(id);
       model.addAttribute("car", car);
+      model.addAttribute("data_entrada", car.get().getFormatDate(car.get().getData_entrada()));
       return "edit-car";
    }
 
@@ -60,6 +61,9 @@ public class CarController {
    public String showOutForm(Model model, @PathVariable("id") Integer id) {
       Optional<Car> car = this.service.getCarResume(id);
       model.addAttribute("car", car);
+      model.addAttribute("data_entrada", car.get().getFormatDate(car.get().getData_entrada()));
+      model.addAttribute("data_saida", car.get().getFormatDate(car.get().getData_saida()));
+      System.out.println("Valor : " +car.get().getValor_pago());
       return "out-car";
    }
 

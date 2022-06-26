@@ -18,7 +18,7 @@
         <label for="placa">Placa:</label><br>
         <input type="text" id="placa" name="placa" th:field="${car.placa}"/><br>
         <label for="entrda">Entrada</label><br>
-        <input type="text" id="data_entrada" name="data_entrada" readonly disabled th:field="${car.data_entrada}"/><br>
+        <input type="text" id="data_entrada" name="data_entrada" readonly disabled th:value="${data_entrada}"/><br>
         <input type="submit" value="Salvar">
     </form>
 
