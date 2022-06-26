@@ -35,30 +35,35 @@ public class Car {
     @Column()
     private Double valor_pago;
 
-    public Double calculateTotalPay(Double valorHora) {
-    
-        Date entrada = this.data_entrada;
-        if (entrada == null) {
+    public Double calculateTotalPay(Double priceFirstHour, Double otherHours) {
+        Double totalToPay = 0.0;
+        Date startDate = this.data_entrada;
+        if (startDate == null) {
             return 0.0;
         }
-   
-        Date saida = this.data_saida;
-        if (saida == null) {
-            return valorHora;
+
+        Date endDate = this.data_saida;
+        if (endDate == null) {
+            return priceFirstHour;
         }
-      
-        long diff = saida.getTime() - entrada.getTime();
-        long minutes = TimeUnit.MILLISECONDS.toMinutes(diff);
 
-      
+        long difference = endDate.getTime() - startDate.getTime();
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(difference);
+
         this.setTempo(minutes);
-        Long tempoHoras = minutes / 60;
-       
-        Double totalToPay = valorHora * tempoHoras;
+        Long timeHours = minutes / 60;
 
-        
+        if (timeHours <= 1) {
+            totalToPay = priceFirstHour * timeHours;
+
+            setValor_pago(totalToPay);
+
+            return totalToPay;
+        }
+        totalToPay = priceFirstHour;
+        totalToPay += (timeHours - 1) * otherHours;
         setValor_pago(totalToPay);
-    
+       
         return totalToPay;
 
     }
