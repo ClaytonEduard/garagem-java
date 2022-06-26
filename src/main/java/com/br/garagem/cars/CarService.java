@@ -89,7 +89,9 @@ public class CarService {
         if (car.isPresent()) {
             Valor valor = new Valor();
             valor = this.valorService.getValor().get();
-            car.get().calculateTotalPay(valor.getPrimeira_hora(), valor.getDemais_horas());
+            car.get().setData_saida(new Date());
+            Double totalCalculado = car.get().calculateTotalPay(valor.getPrimeira_hora(), valor.getDemais_horas());
+            System.out.println(totalCalculado);
             repo.save(car.get());
         }
 
