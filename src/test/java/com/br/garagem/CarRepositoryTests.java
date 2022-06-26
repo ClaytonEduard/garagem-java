@@ -57,11 +57,11 @@ public class CarRepositoryTests {
         car.setData_entrada(d1);
         car.setData_saida(d2);
 
-        Double result = car.calculateTotalPay(6.0);
+        Double result = car.calculateTotalPay(6.0, 4.0);
         Assertions.assertThat(result).isEqualTo(6.0);
     }
 
-    @Test
+   @Test
     public void calcularDuasHoras(){
         Car car = new Car();    
         Date d2 = new Date();
@@ -73,8 +73,21 @@ public class CarRepositoryTests {
         car.setData_entrada(d1);
         car.setData_saida(d2);
 
-        Double result = car.calculateTotalPay(6.0);
-        Assertions.assertThat(result).isEqualTo(12.0);
+        Double result = car.calculateTotalPay(6.0,4.0);
+        Assertions.assertThat(result).isEqualTo(10.0);
+    }
+    @Test
+    public void calcularTresHoras(){
+        Car car = new Car();    
+        Date d2 = new Date();
+        Date d1 = new Date();
+        LocalDateTime localDateTime = d1.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        localDateTime = localDateTime.plusHours(3);
+        d2 = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+        car.setData_entrada(d1);
+        car.setData_saida(d2);
+        Double result = car.calculateTotalPay(6.0,4.0);
+        Assertions.assertThat(result).isEqualTo(14.0);
     }
 
 }
