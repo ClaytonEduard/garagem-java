@@ -53,6 +53,7 @@ public class Car {
         Date endDate = this.data_saida;
         if (endDate == null) {
             setData_saida(new Date());
+            setValor_pago(priceFirstHour);
             return priceFirstHour;
         }
         long difference = endDate.getTime() - startDate.getTime();
