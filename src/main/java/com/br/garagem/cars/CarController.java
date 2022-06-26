@@ -23,13 +23,14 @@ public class CarController {
       List<Car> listCars = service.listParkedCars();
       model.addAttribute("listCars", listCars);
       return "parking-in";
-   }
-
+   } 
+   
    @PostMapping("/new-car")
    public String saveNewCar(@ModelAttribute Car car, Model model) {
-      model.addAttribute("car", car);
       String message = service.saveNewCar(car.getPlaca(), car.getModelo());
       if (message.contains("Erro")) {
+         model.addAttribute("placa", car.getPlaca());
+         model.addAttribute("modelo", car.getModelo());
          model.addAttribute("Erro", message);
          return "new-car";
       };
