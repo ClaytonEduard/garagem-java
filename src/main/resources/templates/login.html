@@ -9,37 +9,39 @@
   <title>Login</title>
 </head>
 
-<body style="background-color:darkgray ;">
-    
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-          <div class="card border-0 shadow rounded-3 my-5">
-            <div class="card-body p-4 p-sm-5">
-              <h5 class="card-title text-center mb-5 fw-light fs-5">Logar</h5>
-              <form action="/parking-in" method="get">
-                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="floatingInput" maxlength="15" required placeholder="Usuário">
-                  <label for="floatingInput">Usuário</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="password" class="form-control" id="floatingPassword" maxlength="6" required placeholder="Password">
-                  <label for="floatingPassword">Senha</label>
-                </div>
-  
-                
-                <div class="d-grid">
-                  <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Login</button>
-                </div>
-                <hr class="my-4">
-              
-              </form>
-            </div>
+<body style="background-color:darkgray ; height:100vh ;">
+
+  <div class="container" style="height: 100vh ;">
+    <div class="row" style="height:100vh; align-items: center;">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card border-0 shadow rounded-3 my-5">
+          <div class="card-body p-4 p-sm-5">
+            <h5 class="text-center mb-5 fw-light fs-5">Logar</h5>
+            <form action="/parking-in" method="get">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" maxlength="15" required
+                  placeholder="Usuário">
+                <label for="floatingInput">Usuário</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingPassword" maxlength="6" required
+                  placeholder="Password">
+                <label for="floatingPassword">Senha</label>
+              </div>
+
+
+              <div class="d-grid">
+                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Login</button>
+              </div>
+              <hr class="my-4">
+
+            </form>
           </div>
         </div>
       </div>
     </div>
- 
+  </div>
+
 </body>
 
 </html>
