@@ -12,16 +12,31 @@
 <body>
     <h1>Edição Carro</h1>
     <a href="/parking-in" class="btn btn-primary">Voltar</a>
-    <form >
+    <form   action="/edit-car" method="post">
+        <input type="hidden" id="id" name="id"  th:field="${car.id}"/><br>
         <label for="modelo">Modelo:</label><br>
-        <input type="text" id="modelo" name="modelo"  th:field="${car.modelo}"/><br>
+        <input type="text" id="modelo" name="modelo" maxlength="15" required th:field="${car.modelo}"/><br>
         <label for="placa">Placa:</label><br>
-        <input type="text" id="placa" name="placa" th:field="${car.placa}"/><br>
+        <input type="text" id="placa" name="placa" maxlength="8" required th:field="${car.placa}"/><br>
         <label for="entrda">Entrada</label><br>
         <input type="text" id="data_entrada" name="data_entrada" readonly disabled th:value="${data_entrada}"/><br>
         <input type="submit" value="Salvar">
     </form>
+    <script type="module">
+        const elementoModelo = document.getElementById("modelo");
+        elementoModelo.addEventListener("keyup", function (e) {
+            elementoModelo.value = e.target.value.toUpperCase();
+        })
+        const elementoPlaca = document.getElementById("placa");
+        elementoPlaca.addEventListener("keyup", function (e) {
+            let txtRecebido = e.target.value;
+            if (txtRecebido.length == 3) {
+                txtRecebido += "-";
+            }
+            elementoPlaca.value = txtRecebido.toUpperCase();
+        })
 
+    </script>
 </body>
 
 </html>
