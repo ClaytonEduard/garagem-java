@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
 @Controller
 public class CarController {
 
@@ -60,7 +59,7 @@ public class CarController {
    }
 
    @PostMapping("/edit-car")
-   public String showCarOut(Model model,@ModelAttribute Car car) {
+   public String showCarOut(Model model, @ModelAttribute Car car) {
       String message = service.updateCar(car.getId(), car.getPlaca(), car.getModelo());
       if (message.contains("Erro")) {
          model.addAttribute("placa", car.getPlaca());
@@ -78,8 +77,14 @@ public class CarController {
       model.addAttribute("car", car);
       model.addAttribute("data_entrada", car.get().getFormatDate(car.get().getData_entrada()));
       model.addAttribute("data_saida", car.get().getFormatDate(car.get().getData_saida()));
-   
+
       return "out-car";
+   }
+
+   @PostMapping("/out-car")
+   public String outCar(@ModelAttribute Car car) {
+      service.confirmOutCar(car.getId());
+      return "redirect:/parking-in";
    }
 
 }
