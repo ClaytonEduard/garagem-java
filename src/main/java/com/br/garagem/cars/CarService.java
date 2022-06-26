@@ -98,6 +98,7 @@ public class CarService {
     public Optional<Car> getCarResume(Integer id) {
         Optional<Car> car = getCarByID(id);
         Valor valor = new Valor();
+        valor = valorService.getValor().get();
         car.get().calculateTotalPay(valor.getPrimeira_hora(), valor.getDemais_horas());
         return car;
     }
