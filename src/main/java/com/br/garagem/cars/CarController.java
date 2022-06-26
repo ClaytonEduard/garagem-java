@@ -31,9 +31,9 @@ public class CarController {
       String message = service.saveNewCar(car.getPlaca(), car.getModelo());
       if (message.contains("Erro")) {
          model.addAttribute("Erro", message);
-      }
-      ;
-      return "new-car";
+         return "new-car";
+      };
+      return "redirect:/parking-in";
    }
 
    @GetMapping("/new-car")
