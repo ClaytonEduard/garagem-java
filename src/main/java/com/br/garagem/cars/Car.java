@@ -1,5 +1,7 @@
 package com.br.garagem.cars;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -35,6 +37,12 @@ public class Car {
     @Column()
     private Double valor_pago;
 
+    public String getFormatDate(Date date) {
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        String today = formatter.format(date.getTime());
+        return today;
+    }
+
     public Double calculateTotalPay(Double priceFirstHour, Double otherHours) {
         Double totalToPay = 0.0;
         Date startDate = this.data_entrada;
@@ -44,6 +52,7 @@ public class Car {
 
         Date endDate = this.data_saida;
         if (endDate == null) {
+            setData_saida(new Date());
             return priceFirstHour;
         }
 
@@ -54,16 +63,14 @@ public class Car {
         Long timeHours = minutes / 60;
 
         if (timeHours <= 1) {
-            totalToPay = priceFirstHour * timeHours;
+            setValor_pago(priceFirstHour);
 
-            setValor_pago(totalToPay);
-
-            return totalToPay;
+            return priceFirstHour;
         }
         totalToPay = priceFirstHour;
         totalToPay += (timeHours - 1) * otherHours;
         setValor_pago(totalToPay);
-       
+
         return totalToPay;
 
     }
