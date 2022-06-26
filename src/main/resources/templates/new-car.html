@@ -19,9 +19,9 @@
     </div>
     <form action="/new-car" method="post">
         <label for="modelo">Modelo:</label><br>
-        <input type="text" id="modelo" name="modelo" maxlength="15" value="" th:value="${modelo}? ${modelo} : ''" /><br>
+        <input type="text" id="modelo" name="modelo" maxlength="15"  required value="" th:value="${modelo}? ${modelo} : ''" /><br>
         <label for="placa">Placa:</label><br>
-        <input type="text" id="placa" name="placa" maxlength="8" value="" th:value="${placa}? ${placa} : ''" /><br>
+        <input type="text" id="placa" name="placa" maxlength="8" required value="" th:value="${placa}? ${placa} : ''" /><br>
         <label for="entrda">Entrada</label><br>
         <input type="text" id="data_entrada" name="data_entrada" value="" readonly disabled /><br>
         <input type="submit" value="Salvar">
