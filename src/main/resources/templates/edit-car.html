@@ -20,7 +20,7 @@
     <section style="padding: 1rem; display: flex; width: 100%; flex-direction: column;">
         <form action="/edit-car" method="post" style="background-color: white; padding: 2rem;">
             <div style="display:flex ; width: 0px ; height: 0px ;">
-                <input type="hidden" id="id" name="id" th:field="${car.id}" disabled readonly /><br>
+                <input type="hidden" id="id" name="id" th:field="${car.id}" /><br>
             </div>
             <label class="form-label" for="modelo">Modelo:</label><br>
             <input type="text" class="form-control" id="modelo" name="modelo" maxlength="15" required
