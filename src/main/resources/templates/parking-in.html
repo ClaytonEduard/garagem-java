@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +10,8 @@
     <title>Veiculos Estacionados</title>
 </head>
 
-<body class="container-fluid">
-    <div style="display:flex; justify-content: space-between; padding-top: 1rem;">
+<body style="background-color:darkgray ; ">
+    <div style="display:flex; justify-content: space-between; background-color: white;padding: 1rem;">
         <h1>Veiculos Estacionados</h1>
         <div style="display: flex; justify-content: center; align-items: center;">
             <div style="display: flex; padding: 1rem;">
@@ -31,33 +31,36 @@
             <a href="/new-car" class="btn btn-success">Novo</a>
         </div>
     </div>
-    <table class="table">
-        <thead class="head">
-            <tr>
-                <th>ID</th>
-                <th>Modelo</th>
-                <th>Placa</th>
-                <th>Data Entrada</th>
-                <th>Opções</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            <th:block th:each="car : ${listCars}">
+    <main class="container-fluid" >
+    <section style="padding: 1rem;">
+        <table class="table" style="background-color: white; ">
+            <thead class="head">
                 <tr>
-                    <td>[[${car.id}]]</td>
-                    <td>[[${car.modelo}]]</td>
-                    <td>[[${car.placa}]]</td>
-                    <td>[[${car.data_entrada}]]</td>
-                    <td>
-                        <a th:href="@{/out-car/{id}(id=${car.id})}" class="btn btn-danger">Sair</a>
-                        <a th:href="@{/edit-car/{id}(id=${car.id})}" class="btn btn-warning">Editar</a>
-                    </td>
-                </tr>
-            </th:block>
-        </tbody>
-    </table>
+                    <th>ID</th>
+                    <th>Modelo</th>
+                    <th>Placa</th>
+                    <th>Data Entrada</th>
+                    <th>Opções</th>
 
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="car : ${listCars}">
+                    <tr>
+                        <td>[[${car.id}]]</td>
+                        <td>[[${car.modelo}]]</td>
+                        <td>[[${car.placa}]]</td>
+                        <td>[[${car.data_entrada}]]</td>
+                        <td>
+                            <a th:href="@{/out-car/{id}(id=${car.id})}" class="btn btn-danger">Sair</a>
+                            <a th:href="@{/edit-car/{id}(id=${car.id})}" class="btn btn-warning">Editar</a>
+                        </td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+    </section>
+    </main>
     <script>
         var radioEstacionado = document.querySelector("#listaSaida");
 
