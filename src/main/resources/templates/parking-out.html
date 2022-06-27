@@ -33,32 +33,35 @@
     </div>
     <main class="container-fluid">
         <section style="padding: 1rem;">
-            <table class="table" style="background-color: white; ">
-                <thead class="head">
-                    <tr>
-                        <th>ID</th>
-                        <th>Placa</th>
-                        <th>Modelo</th>
-                        <th>Data Entrada</th>
-                        <th>Data Saída</th>
-                        <th>Tempo</th>
-                        <th>Valor Pago </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <th:block th:each="car : ${listCars}">
+            <div style="background-color: white; padding: 2rem;">
+                <table class="table">
+                    <thead class="head">
                         <tr>
-                            <td>[[${car.id}]]</td>
-                            <td>[[${car.placa}]]</td>
-                            <td>[[${car.modelo}]]</td>
-                            <td>[[${car.data_entrada}]]</td>
-                            <td>[[${car.data_saida}]]</td>
-                            <td>[[${car.tempo}]]</td>
-                            <td>[[${car.valor_pago}]]</td>
+                            <th>ID</th>
+                            <th>Placa</th>
+                            <th>Modelo</th>
+                            <th>Data Entrada</th>
+                            <th>Data Saída</th>
+                            <th>Tempo</th>
+                            <th>Valor Pago </th>
                         </tr>
-                    </th:block>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <th:block th:each="car : ${listCars}">
+                            <tr>
+                                <td>[[${car.id}]]</td>
+                                <td>[[${car.placa}]]</td>
+                                <td>[[${car.modelo}]]</td>
+                                <td>[[${car.data_entrada}]]</td>
+                                <td>[[${car.data_saida}]]</td>
+                                <td>[[${car.tempo}]]</td>
+                                <td>[[${car.valor_pago}]]</td>
+                            </tr>
+                        </th:block>
+                    </tbody>
+                </table>
+            </div>
+
         </section>
     </main>
     <script>
