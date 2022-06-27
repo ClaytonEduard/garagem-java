@@ -5,29 +5,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Carro Checkout</title>
 </head>
 
-<body>
-    <h1> Carro Checkout</h1>
-    <a href="/parking-in" class="btn btn-primary">Voltar</a>
-    <form action="/out-car" method="post">
-        <input type="hidden" id="id" name="id" th:field="${car.id}"/><br>
-        <label for="modelo">Modelo:</label><br>
-        <input type="text" id="modelo" name="modelo" readonly disabled th:field="${car.modelo}"/><br>
-        <label for="placa">Placa:</label><br>
-        <input type="text" id="placa" name="placa" readonly disabled th:field="${car.placa}"/><br>
-        <label for="data_entrada">Entrada</label><br>
-        <input type="text" id="data_entrada" name="data_entrada" readonly disabled th:value="${data_entrada}"/><br>
-        <label for="data_saida">Saída</label><br>
-        <input type="text" id="data_saida" name="data_saida" readonly disabled th:value="${data_saida}"/><br>
-        <label for="tempo">Tempo Estacionado</label><br>
-        <input type="text" id="tempo" name="tempo" readonly disabled th:field="${car.tempo}"/><br>
-        <label for="valor_pago">Valor total</label><br>
-        <input type="text" id="valor_pago" name="valor_pago" readonly disabled th:field="${car.valor_pago}"/> <br>
-        <input type="submit" value="Salvar">
-    </form>
+<body style="background-color:darkgray ; ">
+    <div style="display:flex; justify-content: space-between; background-color: white;padding: 1rem;">
+        <h1> Carro Checkout</h1>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <a href="/parking-in" class="btn btn-primary">Voltar</a>
+        </div>
+    </div>
+    <section style="padding: 1rem; display: flex; width: 100%; flex-direction: column;">
+        <form action="/out-car" method="post" style="background-color: white; padding: 2rem;">
+            <div style="display:flex ; width: 0px ; height: 0px ;">
+                <input type="hidden" id="id" name="id" th:field="${car.id}" /><br>
+            </div>
+            <label class="form-label" for="modelo">Modelo:</label><br>
+            <input type="text" class="form-control" id="modelo" name="modelo" readonly disabled
+                th:field="${car.modelo}" /><br>
+            <label class="form-label" for="placa">Placa:</label><br>
+            <input type="text" class="form-control" id="placa" name="placa" readonly disabled
+                th:field="${car.placa}" /><br>
+            <label class="form-label" for="data_entrada">Entrada</label><br>
+            <input type="text" class="form-control" id="data_entrada" name="data_entrada" readonly disabled
+                th:value="${data_entrada}" /><br>
+            <label class="form-label" for="data_saida">Saída</label><br>
+            <input type="text" class="form-control" id="data_saida" name="data_saida" readonly disabled
+                th:value="${data_saida}" /><br>
+            <label class="form-label" for="tempo">Tempo Estacionado</label><br>
+            <input type="text" class="form-control" id="tempo" name="tempo" readonly disabled
+                th:field="${car.tempo}" /><br>
+            <label class="form-label" for="valor_pago">Valor total</label><br>
+            <input type="text" class="form-control" id="valor_pago" name="valor_pago" readonly disabled
+                th:field="${car.valor_pago}" /> <br>
+            <input type="submit" class="btn btn-success btn-login text-uppercase fw-bold form-control" value="Confirmar Checkout">
+        </form>
+    </section>
 </body>
 
 </html>
