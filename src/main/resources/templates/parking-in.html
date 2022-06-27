@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +14,7 @@
     <div style="display:flex; justify-content: space-between; background-color: white;padding: 1rem;">
         <h1>Veiculos Estacionados</h1>
         <div style="display: flex; justify-content: center; align-items: center;">
+
             <div style="display: flex; padding: 1rem;">
                 <div id="listaEstacionados" class="form-check" style="margin: 1rem ;">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
@@ -28,40 +29,53 @@
                     </label>
                 </div>
             </div>
+            <!-- <div style="display: flex; padding: 1rem; flex-wrap: nowrap;">
+                <form action="#" method="get">
+                    <div style="display: flex; padding: 1rem; flex-wrap: nowrap;">
+                        <input th:list="browsers" class="form-control" name="browser" id="browser">
+                        <datalist th:each="car : ${listCars}" id="browsers">
+                            <option>
+
+                        </datalist>
+                        <input type="submit" value="Buscar Placa"
+                            class="btn btn-primary btn-login text-uppercase fw-bold">
+                    </div>
+                </form>
+            </div> -->
             <a href="/new-car" class="btn btn-success">Novo</a>
         </div>
     </div>
-    <main class="container-fluid" >
-    <section style="padding: 1rem;">
-        <div style="background-color: white; padding: 2rem;">
-        <table class="table">
-            <thead class="head">
-                <tr>
-                    <th>ID</th>
-                    <th>Modelo</th>
-                    <th>Placa</th>
-                    <th>Data Entrada</th>
-                    <th>Opções</th>
+    <main class="container-fluid">
+        <section style="padding: 1rem;">
+            <div style="background-color: white; padding: 2rem;">
+                <table class="table">
+                    <thead class="head">
+                        <tr>
+                            <th>ID</th>
+                            <th>Modelo</th>
+                            <th>Placa</th>
+                            <th>Data Entrada</th>
+                            <th>Opções</th>
 
-                </tr>
-            </thead>
-            <tbody>
-                <th:block th:each="car : ${listCars}">
-                    <tr>
-                        <td>[[${car.id}]]</td>
-                        <td>[[${car.modelo}]]</td>
-                        <td>[[${car.placa}]]</td>
-                        <td>[[${car.data_entrada}]]</td>
-                        <td>
-                            <a th:href="@{/out-car/{id}(id=${car.id})}" class="btn btn-danger">Sair</a>
-                            <a th:href="@{/edit-car/{id}(id=${car.id})}" class="btn btn-warning">Editar</a>
-                        </td>
-                    </tr>
-                </th:block>
-            </tbody>
-        </table>
-        </div>
-    </section>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <th:block th:each="car : ${listCars}">
+                            <tr>
+                                <td>[[${car.id}]]</td>
+                                <td>[[${car.modelo}]]</td>
+                                <td>[[${car.placa}]]</td>
+                                <td>[[${car.data_entrada}]]</td>
+                                <td>
+                                    <a th:href="@{/out-car/{id}(id=${car.id})}" class="btn btn-danger">Checkout</a>
+                                    <a th:href="@{/edit-car/{id}(id=${car.id})}" class="btn btn-warning">Editar</a>
+                                </td>
+                            </tr>
+                        </th:block>
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </main>
     <script>
         var radioEstacionado = document.querySelector("#listaSaida");
