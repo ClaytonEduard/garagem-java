@@ -10,18 +10,18 @@
     <title>Veiculos Sairam</title>
 </head>
 
-<body class="container-fluid">
-    <div style="display:flex; justify-content: space-between; padding-top: 1rem;">
+<body style="background-color:darkgray ; ">
+    <div style="display:flex; justify-content: space-between; background-color: white;padding: 1rem;">
         <h1> Veiculos Saíram</h1>
         <div style="display: flex; justify-content: center; align-items: center;">
             <div style="display: flex; padding: 1rem;">
-                <div id="listaEstacionados" class="form-check"  style="margin: 1rem ;">
+                <div id="listaEstacionados" class="form-check" style="margin: 1rem ;">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                     <label class="form-check-label" for="flexRadioDefault1">
                         Estacionados
                     </label>
                 </div>
-                <div id="listaSaida" class="form-check"  style="margin: 1rem ;">
+                <div id="listaSaida" class="form-check" style="margin: 1rem ;">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
                     <label class="form-check-label" for="flexRadioDefault2">
                         Sairam
@@ -31,33 +31,36 @@
             <a href="/new-car" class="btn btn-success">Novo</a>
         </div>
     </div>
-    <table class="table">
-        <thead class="head">
-            <tr>
-                <th>ID</th>
-                <th>Placa</th>
-                <th>Modelo</th>
-                <th>Data Entrada</th>
-                <th>Data Saída</th>
-                <th>Tempo</th>
-                <th>Valor Pago </th>
-            </tr>
-        </thead>
-        <tbody>
-            <th:block th:each="car : ${listCars}">
-                <tr>
-                    <td>[[${car.id}]]</td>
-                    <td>[[${car.placa}]]</td>
-                    <td>[[${car.modelo}]]</td>
-                    <td>[[${car.data_entrada}]]</td>
-                    <td>[[${car.data_saida}]]</td>
-                    <td>[[${car.tempo}]]</td>
-                    <td>[[${car.valor_pago}]]</td>
-                </tr>
-            </th:block>
-        </tbody>
-    </table>
-
+    <main class="container-fluid">
+        <section style="padding: 1rem;">
+            <table class="table" style="background-color: white; ">
+                <thead class="head">
+                    <tr>
+                        <th>ID</th>
+                        <th>Placa</th>
+                        <th>Modelo</th>
+                        <th>Data Entrada</th>
+                        <th>Data Saída</th>
+                        <th>Tempo</th>
+                        <th>Valor Pago </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <th:block th:each="car : ${listCars}">
+                        <tr>
+                            <td>[[${car.id}]]</td>
+                            <td>[[${car.placa}]]</td>
+                            <td>[[${car.modelo}]]</td>
+                            <td>[[${car.data_entrada}]]</td>
+                            <td>[[${car.data_saida}]]</td>
+                            <td>[[${car.tempo}]]</td>
+                            <td>[[${car.valor_pago}]]</td>
+                        </tr>
+                    </th:block>
+                </tbody>
+            </table>
+        </section>
+    </main>
     <script>
         var radioEstacionado = document.querySelector("#listaEstacionados");
 
