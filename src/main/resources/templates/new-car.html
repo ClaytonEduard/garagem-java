@@ -11,22 +11,30 @@
     <title>Novo Carro</title>
 </head>
 
-<body>
-    <h1>Novo Carro</h1>
-    <a href="/parking-in" class="btn btn-primary">Voltar</a>
+
+<body style="background-color:darkgray ; ">
+    <div style="display:flex; justify-content: space-between; background-color: white;padding: 1rem;">
+        <h1>Novo Carro</h1>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <a href="/parking-in" class="btn btn-primary">Voltar</a>
+        </div>
+    </div>
     <div th:if="${Erro}">
         <div th:text="${Erro}" class="alert alert-danger" role="alert"></div>
     </div>
-    <form action="/new-car" method="post">
-        <label for="modelo">Modelo:</label><br>
-        <input type="text" id="modelo" name="modelo" maxlength="15"  required value="" th:value="${modelo}? ${modelo} : ''" /><br>
-        <label for="placa">Placa:</label><br>
-        <input type="text" id="placa" name="placa" maxlength="8" required value="" th:value="${placa}? ${placa} : ''" /><br>
-        <label for="entrda">Entrada</label><br>
-        <input type="text" id="data_entrada" name="data_entrada" value="" readonly disabled /><br>
-        <input type="submit" value="Salvar">
-    </form>
-
+    <section style="padding: 1rem; display: flex; width: 100%; flex-direction: column;">
+        <form action="/new-car" method="post" style="background-color: white; padding: 2rem;">
+            <label class="form-label" for="modelo">Modelo:</label><br>
+            <input type="text"  class="form-control" id="modelo" name="modelo" maxlength="15" required value=""
+                th:value="${modelo}? ${modelo} : ''" /><br>
+            <label   class="form-label" for="placa">Placa:</label><br>
+            <input type="text" class="form-control" id="placa" name="placa" maxlength="8" required value=""
+                th:value="${placa}? ${placa} : ''" /><br>
+            <label  class="form-label" for="entrda">Entrada</label><br>
+            <input type="text" class="form-control" id="data_entrada" name="data_entrada" value="" readonly disabled /><br>
+            <input class="btn btn-primary btn-login text-uppercase fw-bold form-control" type="submit" value="Salvar">
+        </form>
+    </section>
     <script type="module">
         import moment from 'https://cdn.skypack.dev/moment';
         const elementoModelo = document.getElementById("modelo");
